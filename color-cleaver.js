@@ -11,17 +11,17 @@ const color2 = getInput(2)
 function definitiveOrNot(color1,color2) {
     if (color1 === undefined && color2 === undefined) {
         return "You did not put any colors for an input!!!"
-    } else if (isValidSecondary(color1) === true) {
+    } else if (isValidSecondary(color1)) {
         if(color2 === undefined) {
             return "You mixed " + colorDeconstructor(color1) + " to get " + color1
         } else if(isValidPrimary(color2)) {
             return "You mixed " + colorDeconstructor(color1) + " to get " + color1 + " but" + color2 + " is a primary color."
         }
-    } else if (isValidPrimary(color1) === true && isValidPrimary(color2) === true && color1 !== color2) {
+    } else if (isValidPrimary(color1) && isValidPrimary(color2)&& color1 !== color2) {
         return color1 + " " + color2 + " will get you " + colorCombinator(color1,color2)
-    } else if ((isValidPrimary(color1) === true && isValidPrimary(color2)=== false) || (isValidPrimary(color2) === true && isValidPrimary(color1)=== false)){
+    } else if ((isValidPrimary(color1) === true && isValidPrimary(color2)) || (isValidPrimary(color2)&& isValidPrimary(color1))){
         return "I can not mix these colors, these computing systems are unable to compute that."
-    } else if (isValidSecondary(color2) === true) {
+    } else if (isValidSecondary(color2)) {
         return color2 + " can be split into " + colorDeconstructor(color2) + " but I cannot do anything else with " + color1
     } else {
         return "You're doing too much!"
