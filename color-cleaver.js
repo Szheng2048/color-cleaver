@@ -5,14 +5,18 @@ const isValidSecondary = require("./is-valid-secondary.js");
 const getInput = require("./get-input.js");
 
 // Your code here!
-let color1 = getInput(1)
-let color2 = getInput(2)
+const color1 = getInput(1)
+const color2 = getInput(2)
 
 function definitiveOrNot(color1,color2) {
     if (color1 === undefined && color2 === undefined) {
         return "You did not put any colors for an input!!!"
     } else if (isValidSecondary(color1) === true) {
-        return "You mixed " + colorDeconstructor(color1) + " to get " + color1
+        if(color2 === undefined) {
+            return "You mixed " + colorDeconstructor(color1) + " to get " + color1
+        } else if(isValidPrimary(color2)) {
+            return "You mixed " + colorDeconstructor(color1) + " to get " + color1 + " but" + color2 + " is a primary color."
+        }
     } else if (isValidPrimary(color1) === true && isValidPrimary(color2) === true && color1 !== color2) {
         return color1 + " " + color2 + " will get you " + colorCombinator(color1,color2)
     } else if ((isValidPrimary(color1) === true && isValidPrimary(color2)=== false) || (isValidPrimary(color2) === true && isValidPrimary(color1)=== false)){
